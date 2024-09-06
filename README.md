@@ -9,7 +9,7 @@
 - User can drag down to refresh should they need to
 - Shows cool wave animation in background
 
-### Payment Screen -
+### Payment Screen 
 - same code for both top up and make payment but changes flow based on button tapped
 - Keyboard handles input errors such as starting with a leading 0 or trying to put >2 0s after decimal place
 - Upon 'next' for make payment, navigate to 'who'. For top up, just show 'top up' button
