@@ -1,6 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:obviously_test_final/features/transactions/data/mock_data.dart';
 import 'package:obviously_test_final/features/transactions/models/transaction_model.dart';
 
 class TransactionRepo {

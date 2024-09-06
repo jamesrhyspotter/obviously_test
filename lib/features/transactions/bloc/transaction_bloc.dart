@@ -27,7 +27,8 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
       await TransactionRepo.instance
           .updateCurrentBalance(newBalance: newBalance);
 
-      await TransactionRepo.instance.uploadTransaction(transaction: finalTransaction);
+      await TransactionRepo.instance
+          .uploadTransaction(transaction: finalTransaction);
 
       emit(state.copyWith(
           allTransactions: newTransactions, currentBalance: newBalance));
@@ -44,9 +45,6 @@ class TransactionBloc extends Bloc<TransactionEvent, TransactionState> {
 
         double currentBalance =
             await TransactionRepo.instance.fetchCurrentBalance();
-
-        // simulating fetching from DB
-        await Future.delayed(const Duration(seconds: 2));
 
         emit(state.copyWith(
             allTransactions: retrievedTransactions,
