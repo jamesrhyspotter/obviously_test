@@ -21,8 +21,8 @@ class TransactionsMainView extends StatelessWidget {
     final bloc = context.read<TransactionBloc>();
     return BlocBuilder<TransactionBloc, TransactionState>(
       builder: (context, state) {
-        if (!state.transactionsFetched) {
-          bloc.add(FetchAllTransactions());
+        if (!state.transactionsFetching) {
+          bloc.add(InitialiseTransactionBloc());
         }
         return Scaffold(
           appBar: AppBar(
@@ -32,24 +32,23 @@ class TransactionsMainView extends StatelessWidget {
               IconButton(
                   onPressed: () {
                     NavigationHelper.instance.to(
-                        context: context,
-                        page: const CurrencyConversionScreen(),
-                        
-                       );
+                      context: context,
+                      page: const CurrencyConversionScreen(),
+                    );
                   },
                   icon: const Icon(
                     Icons.currency_exchange,
                   ))
             ],
           ),
-          body: LiquidPullToRefresh(
-            color: theme.primaryColor,
-            onRefresh: () async {
-              bloc.add(FetchAllTransactions());
-            },
-            child: state.isLoading
-                ? const LoadingWidget()
-                : CustomScrollView(
+          body: state.isLoading
+              ? const LoadingWidget()
+              : LiquidPullToRefresh(
+                  color: theme.primaryColor,
+                  onRefresh: () async {
+                    bloc.add(InitialiseTransactionBloc());
+                  },
+                  child: CustomScrollView(
                     slivers: [
                       SliverToBoxAdapter(
                           child: TransactionsHeader(
@@ -60,7 +59,9 @@ class TransactionsMainView extends StatelessWidget {
                           padding:
                               const EdgeInsets.only(left: 20.0, bottom: 10),
                           child: Text(
-                            'Recent Activity',
+                            state.allTransactions.isEmpty
+                                ? 'Your transaction activity will show here.'
+                                : 'Recent Activity',
                             style: theme.textTheme.headlineMedium,
                           ),
                         ),
@@ -68,7 +69,7 @@ class TransactionsMainView extends StatelessWidget {
                       ActivityList(transactions: state.allTransactions)
                     ],
                   ),
-          ),
+                ),
         );
       },
     );

@@ -46,6 +46,28 @@ class TransactionModel {
     );
   }
 
+  Map<String, dynamic> toMap() {
+    return {
+      'amount': amount,
+      'counterParty': counterParty,
+      'id': id,
+      'date': date?.toIso8601String(), 
+      'type': type.toString(), 
+    };
+  }
+
+  factory TransactionModel.fromMap(Map<String, dynamic> map) {
+    return TransactionModel(
+        amount: map['amount'] as double,
+        counterParty: map['counterParty'] as String?,
+        id: map['id'] as String?,
+        date: map['date'] != null ? DateTime.parse(map['date']) : null,
+        type: map['type'] != null
+            ? TransactionType.values
+                .firstWhere((type) => type.toString() == map['type'])
+            : TransactionType.sentPayment);
+  }
+
   @override
   String toString() {
     return 'TransactionModel(amount: $amount, counterParty: $counterParty, type: $type, date: $date, id: $id)';

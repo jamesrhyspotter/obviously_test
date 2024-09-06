@@ -3,7 +3,7 @@ import 'package:obviously_test_final/features/transactions/models/transaction_mo
 abstract class TransactionEvent {}
 
 
-class FetchAllTransactions extends TransactionEvent {}
+class InitialiseTransactionBloc extends TransactionEvent {}
 
 class SaveTransaction extends TransactionEvent {
   final TransactionModel transaction;

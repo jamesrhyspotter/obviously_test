@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "262590802073",
+    "project_id": "obviously-060924",
+    "storage_bucket": "obviously-060924.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:262590802073:android:5337d12c1cd62bb127f008",
+        "android_client_info": {
+          "package_name": "io.gigafit.obviously_test_final"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC2_K3vIWeLlLPnJrfGgCJk4LP_KNmGf6A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

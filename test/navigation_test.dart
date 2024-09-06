@@ -29,7 +29,7 @@ void main() {
       (WidgetTester tester) async {
     // Mock the initial state
     final initialTransactionState = TransactionState(
-      transactionsFetched: false,
+      transactionsFetching: false,
       isLoading: true,
       allTransactions: [],
       currentBalance: 0,

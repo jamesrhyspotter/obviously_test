@@ -29,7 +29,7 @@ void main() {
       (WidgetTester tester) async {
     // Mock the initial state
     final initialState = TransactionState(
-      transactionsFetched: false,
+      transactionsFetching: false,
       isLoading: true,
       allTransactions: [],
       currentBalance: 0,
@@ -63,7 +63,7 @@ void main() {
     ];
 
     final fetchedState = TransactionState(
-      transactionsFetched: true,
+      transactionsFetching: true,
       isLoading: false,
       allTransactions: mockTransactions,
       currentBalance: 300.0, // Example balance
@@ -102,7 +102,7 @@ void main() {
     ];
 
     final fetchedState = TransactionState(
-      transactionsFetched: true,
+      transactionsFetching: true,
       isLoading: false,
       allTransactions: mockTransactions,
       currentBalance: 300.0, // Example balance

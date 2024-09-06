@@ -1,15 +1,20 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:obviously_test_final/features/currency_converter/bloc/conversion_bloc.dart';
 import 'package:obviously_test_final/features/payment/bloc/payment_bloc.dart';
 import 'package:obviously_test_final/features/transactions/bloc/transaction_bloc.dart';
 import 'package:obviously_test_final/features/transactions/view/transactions_main_view.dart';
-import 'package:obviously_test_final/features/transactions/widgets/action_card.dart';
+import 'package:obviously_test_final/firebase_options.dart';
 import 'package:obviously_test_final/themes/themes.dart';
 import 'package:rive_splash_screen/rive_splash_screen.dart';
 
-void main() {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   runApp(const MyApp());
 }
