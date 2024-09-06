@@ -1,16 +1,22 @@
 # obviously_test_final_final
 
-A new Flutter project.
+## Screen Descriptions
 
-## Getting Started
+### Home Page - Tranaction Main View
+- Loads and fetches transactions and balance from firebse
+- Displays balance and transactions
+- User can navigate to pay, topup and currency conversions
+- User can drag down to refresh should they need to
+- Shows cool wave animation in background
 
-This project is a starting point for a Flutter application.
+### Payment Screen -
+- same code for both top up and make payment but changes flow based on button tapped
+- Keyboard handles input errors such as starting with a leading 0 or trying to put >2 0s after decimal place
+- Upon 'next' for make payment, navigate to 'who'. For top up, just show 'top up' button
+- Shows confirmation screen for both transaction types, with conditional text for each case
+- All transactions updated locally and via firebase
+- Returns to home screen with updated activity
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+### Currency Converter 
+- loads currency conversions in
+- upon currency selected, show text input for desired GBP amount 
