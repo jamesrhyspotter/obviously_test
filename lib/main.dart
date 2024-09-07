@@ -2,6 +2,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:obviously_test_final/features/currency_converter/bloc/conversion_bloc.dart';
+import 'package:obviously_test_final/features/password_screen/bloc/password_bloc.dart';
+import 'package:obviously_test_final/features/password_screen/views%20/password_screen.dart';
 import 'package:obviously_test_final/features/payment/bloc/payment_bloc.dart';
 import 'package:obviously_test_final/features/transactions/bloc/transaction_bloc.dart';
 import 'package:obviously_test_final/features/transactions/view/transactions_main_view.dart';
@@ -27,6 +29,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider<PasswordBloc>(
+          create: (_) => PasswordBloc(),
+        ),
         BlocProvider<TransactionBloc>(
           create: (context) => TransactionBloc(),
         ),
@@ -35,7 +40,7 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => PaymentBloc(),
-        )
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -43,7 +48,7 @@ class MyApp extends StatelessWidget {
         theme: Themes.mainTheme,
         home: SplashScreen.navigate(
           name: 'assets/rive/rive_logo.riv',
-          next: (_) => const TransactionsMainView(),
+          next: (_) => const PasswordScreen(),
           until: () => Future.delayed(const Duration(seconds: 1)),
           startAnimation: 'deactivated',
           endAnimation: 'activating',

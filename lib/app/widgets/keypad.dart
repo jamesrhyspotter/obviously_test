@@ -3,8 +3,9 @@ import 'package:flutter/services.dart';
 
 class KeyPad extends StatelessWidget {
   final Function(String) handleInput;
+  final bool showDecimal; 
 
-  const KeyPad({super.key, required this.handleInput});
+  const KeyPad({super.key, required this.handleInput, this.showDecimal = true});
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +28,18 @@ class KeyPad extends StatelessWidget {
               child: Text('$i', style: theme.textTheme.displayMedium),
             ),
           ),
+
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: TextButton(
+          child: showDecimal ? 
+          
+          TextButton(
             onPressed: () {
               HapticFeedback.lightImpact();
               handleInput('.');
             },
             child: Text('.', style: theme.textTheme.displayMedium),
-          ),
+          ): const SizedBox(),
         ),
         Padding(
           padding: const EdgeInsets.all(8.0),
