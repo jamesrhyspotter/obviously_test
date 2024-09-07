@@ -32,7 +32,10 @@ class _WaveAnimationState extends State<WaveAnimation>
 
   @override
   Widget build(BuildContext context) {
-    return WaveStack(animation: animation);
+    return SizedBox(
+        height: 200,
+        width: MediaQuery.of(context).size.width,
+        child: WaveStack(animation: animation));
   }
 }
 
@@ -44,7 +47,7 @@ class WaveStack extends AnimatedWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context); 
+    final theme = Theme.of(context);
     return Column(
       children: [
         Expanded(

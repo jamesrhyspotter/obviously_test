@@ -12,15 +12,11 @@ class TransactionsHeader extends StatelessWidget {
     final theme = Theme.of(context);
     return Stack(
       children: [
-        
         Container(
           color: theme.primaryColor,
           height: 200,
         ),
-        SizedBox(
-          height: 200,
-           width: MediaQuery.of(context).size.width,
-          child: const WaveAnimation()),
+        const WaveAnimation(),
         SizedBox(
           height: 280,
           width: MediaQuery.of(context).size.width,

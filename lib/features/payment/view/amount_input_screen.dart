@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:obviously_test_final/app/widgets/balance_text.dart';
-import 'package:obviously_test_final/features/payment/widgets/keypad.dart';
+import 'package:obviously_test_final/app/widgets/keypad.dart';
 import 'package:obviously_test_final/features/transactions/models/transaction_model.dart';
 
 class AmountInputScreen extends StatelessWidget {
