@@ -18,11 +18,11 @@ class PasswordScreen extends StatelessWidget {
     final theme = Theme.of(context);
     return BlocBuilder<PasswordBloc, PasswordState>(
       builder: (context, state) {
-        if (state.authenticated) {
+        if (state is PasswordSuccessState) {
           return ConfirmationScreen(
             icon: const Icon(Icons.done_rounded),
             bypassFirstScreen: true,
-            confirmationTitle: 'Password Correct',
+            confirmationTitle: 'Welcome.',
             showActionButtons: false,
             onTap: () {
               NavigationHelper.instance
