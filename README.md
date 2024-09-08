@@ -20,3 +20,8 @@
 ### Currency Converter 
 - loads currency conversions in
 - upon currency selected, show text input for desired GBP amount 
+
+
+### Extra notes 
+- I have added in a password screen with password 000000. This is a basic implementation that should be refactored with a FlowBuilder, such that the authentication does not rely on the password screen state. 
+- I have added in firebase to handle the data and my API keys are still present in the project - this is okay for now as it is a small project and the firebase project is on the free plan. If this was a paid API key or project of business significance, I would put the firebase API key in a .env file and update the .gitignore to exlcude google-services.json and googleservice-info.plist from the git upload. 
