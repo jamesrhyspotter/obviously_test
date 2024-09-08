@@ -5,7 +5,7 @@ class PasswordState {
   const PasswordState({this.input = '', this.passError = false});
 
   PasswordState copyWith(
-      {bool? authenticated, String? input, bool? passError}) {
+      {String? input, bool? passError}) {
     return PasswordState(
         input: input ?? this.input, passError: passError ?? this.passError);
   }

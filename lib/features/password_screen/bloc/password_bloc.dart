@@ -2,10 +2,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:obviously_test_final/features/password_screen/bloc/password_event.dart';
 import 'package:obviously_test_final/features/password_screen/bloc/password_state.dart';
 
-// String password = '000000';
-
 class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
-  final String password; // Make the password configurable
+  final String password; 
 
   PasswordBloc({this.password = '000000'}) : super(const PasswordState()) {
     on<HandlePassInput>(_handlePassInput);
@@ -22,7 +20,6 @@ class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
         state.copyWith(
           input: newInput,
           passError: newInput.length == 6 && newInput != password,
-          authenticated: newInput == password,
         ),
       );
     }
@@ -32,7 +29,9 @@ class PasswordBloc extends Bloc<PasswordEvent, PasswordState> {
   String _processInput(String currentInput, String newInput) {
     if (newInput == '<') {
       // Handle backspace
-      return currentInput.isEmpty ? '' : currentInput.substring(0, currentInput.length - 1);
+      return currentInput.isEmpty
+          ? ''
+          : currentInput.substring(0, currentInput.length - 1);
     } else if (currentInput.length < 6) {
       // Append new input
       return '$currentInput$newInput';
