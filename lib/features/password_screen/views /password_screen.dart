@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:obviously_test_final/app/animations/waves.dart';
 import 'package:obviously_test_final/app/helpers/navigation_helper.dart';
-import 'package:obviously_test_final/app/widgets/loading_widget.dart';
+import 'package:obviously_test_final/app/screens/confirmation_screen.dart';
+import 'package:obviously_test_final/app/widgets/keypad.dart';
 import 'package:obviously_test_final/features/password_screen/bloc/password_bloc.dart';
 import 'package:obviously_test_final/features/password_screen/bloc/password_event.dart';
 import 'package:obviously_test_final/features/password_screen/bloc/password_state.dart';
 import 'package:obviously_test_final/features/password_screen/widgets/password_indicator.dart';
-import 'package:obviously_test_final/app/widgets/keypad.dart';
 import 'package:obviously_test_final/features/transactions/view/transactions_main_view.dart';
 
 class PasswordScreen extends StatelessWidget {
@@ -19,7 +19,16 @@ class PasswordScreen extends StatelessWidget {
     return BlocBuilder<PasswordBloc, PasswordState>(
       builder: (context, state) {
         if (state.authenticated) {
-          return const TransactionsMainView();
+          return ConfirmationScreen(
+            icon: const Icon(Icons.done_rounded),
+            bypassFirstScreen: true,
+            confirmationTitle: 'Password Correct',
+            showActionButtons: false,
+            onTap: () {
+              NavigationHelper.instance
+                  .offAll(context: context, page: const TransactionsMainView());
+            },
+          );
         }
         return Scaffold(
           backgroundColor: theme.primaryColor,

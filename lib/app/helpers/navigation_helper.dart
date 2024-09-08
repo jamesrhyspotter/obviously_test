@@ -10,17 +10,21 @@ class NavigationHelper {
     Navigator.of(context).pop(result);
   }
 
+  to({required BuildContext context, required Widget page}) {
+    Navigator.of(context).push(FadeRouteBuilder(page: page));
+  }
 
-to({required BuildContext context, required Widget page}) {
-  Navigator.of(context).push(FadeRouteBuilder(page: page));
-}
+  toWithResult({required BuildContext context, required Widget page}) async {
+    final result =
+        await Navigator.of(context).push(FadeRouteBuilder(page: page));
 
-toWithResult({required BuildContext context, required Widget page}) async {
-  final result = await Navigator.of(context).push(FadeRouteBuilder(page: page));
+    return result;
+  }
 
-  return result;
-}
-
+  offAll({required BuildContext context, required Widget page}) {
+    Navigator.of(context)
+        .pushAndRemoveUntil(FadeRouteBuilder(page: page), (route) => false);
+  }
 }
 
 class FadeRouteBuilder<T> extends PageRouteBuilder<T> {

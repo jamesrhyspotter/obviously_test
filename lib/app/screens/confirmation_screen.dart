@@ -14,6 +14,8 @@ class ConfirmationScreen extends StatefulWidget {
   final Widget icon;
   final Widget? centerWidget;
   final bool bypassFirstScreen;
+  final String loadingString; 
+  final bool showActionButtons; 
   const ConfirmationScreen(
       {super.key,
       this.title,
@@ -24,7 +26,7 @@ class ConfirmationScreen extends StatefulWidget {
       this.onTapText,
       required this.icon,
       this.centerWidget,
-      this.bypassFirstScreen = false});
+      this.bypassFirstScreen = false,this.loadingString = 'Loading...', this.showActionButtons = true});
 
   @override
   State<ConfirmationScreen> createState() => _ConfirmationScreenState();
@@ -85,7 +87,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           isLoading
-                              ? const LoadingWidget(label: 'Sending...', color: Colors.white,)
+                              ?  LoadingWidget(label: widget.loadingString, color: Colors.white,)
                               : animating
                                   ? SizedBox(
                                       height: 50,
@@ -154,6 +156,7 @@ class _ConfirmationScreenState extends State<ConfirmationScreen> {
                 ),
               ],
             ),
+            if(widget.showActionButtons)
             Positioned(
                 bottom: 0,
                 child: AnimatedOpacity(

@@ -1,3 +1,4 @@
+import 'package:delayed_display/delayed_display.dart';
 import 'package:flutter/material.dart';
 
 class PasswordIndicator extends StatelessWidget {
@@ -17,14 +18,17 @@ class PasswordIndicator extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(totalCircles, (index) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(
-              horizontal: 8.0), // Add spacing between circles
-          child: CircleAvatar(
-            radius: 12.0, // Size of the circles
-            backgroundColor: index < filledCircles
-                ? filledColor ?? theme.highlightColor // Filled circle
-                : Colors.grey, // Empty circle
+        return DelayedDisplay(
+          delay: Duration(milliseconds: 100 * index),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(
+                horizontal: 8.0), // Add spacing between circles
+            child: CircleAvatar(
+              radius: 12.0, // Size of the circles
+              backgroundColor: index < filledCircles
+                  ? filledColor ?? theme.highlightColor // Filled circle
+                  : Colors.grey, // Empty circle
+            ),
           ),
         );
       }),
